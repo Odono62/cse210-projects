@@ -5,69 +5,93 @@ class Program
     static void Main(string[] args)
     {
         Journal journal = new Journal();
-PromptGenerator promptGenerator = new PromptGenerator();
+        PromptGenerator promptGenerator = new PromptGenerator();
 
-bool running = true;
+        bool running = true;
 
-while (running)
-{
-    Console.WriteLine("Welcome to the journal program");
-    Console.WriteLine("Please select one of the following choices");
-    Console.WriteLine("1. Write");
-    Console.WriteLine("2. Display");
-    Console.WriteLine("3. Load");
-    Console.WriteLine("4. Save");
-    Console.WriteLine("5. Quit");
+        while (running)
+        {
+            Console.WriteLine("\nJournal Menu");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Search");
+            Console.WriteLine("6. Quit");
 
-    Console.Write("Select a choice: ");
-    string choice = Console.ReadLine();
+            Console.Write("Select a choice: ");
 
-    if (choice == "1")
-    {
-        string prompt = promptGenerator.GetRandomPrompt();
+            string choice = Console.ReadLine();
 
-        Console.WriteLine(prompt);
-        Console.Write("> ");
+            if (choice == "1")
+            {
+                string prompt = promptGenerator.GetRandomPrompt();
 
-        string response = Console.ReadLine();
+                Console.WriteLine($"\nPrompt: {prompt}");
+                Console.Write("> ");
 
-        Entry entry = new Entry();
+                string response = Console.ReadLine();
 
-        entry._date = DateTime.Now.ToShortDateString();
-        entry._promptText = prompt;
-        entry._entryText = response;
+                Entry entry = new Entry();
 
-        Console.Write("Mood today: ");
-        entry._mood = Console.ReadLine();
+                entry._date = DateTime.Now.ToShortDateString();
+                entry._promptText = prompt;
+                entry._entryText = response;
 
-        journal.AddEntry(entry);
-    }
+                Console.Write("How are you feeling today? ");
+                entry._mood = Console.ReadLine();
 
-    else if (choice == "2")
-    {
-        journal.DisplayAll();
-    }
+                journal.AddEntry(entry);
 
-    else if (choice == "3")
-    {
-        Console.Write("Filename: ");
-        string file = Console.ReadLine();
+                Console.WriteLine("\nEntry added successfully.");
 
-        journal.LoadFromFile(file);
-    }
+                // Motivation quote feature
+                Console.WriteLine("Keep going. Small progress matters.");
+            }
 
-    else if (choice == "4")
-    {
-        Console.Write("Filename: ");
-        string file = Console.ReadLine();
+            else if (choice == "2")
+            {
+                journal.DisplayAll();
+            }
 
-        journal.SaveToFile(file);
-    }
+            else if (choice == "3")
+            {
+                Console.Write("Enter filename to load: ");
 
-    else if (choice == "5")
-    {
-        running = false;
-    }
-}
+                string file = Console.ReadLine();
+
+                journal.LoadFromFile(file);
+            }
+
+            else if (choice == "4")
+            {
+                Console.Write("Enter filename to save: ");
+
+                string file = Console.ReadLine();
+
+                journal.SaveToFile(file);
+            }
+
+            else if (choice == "5")
+            {
+                Console.Write("Enter keyword to search: ");
+
+                string keyword = Console.ReadLine();
+
+                journal.SearchEntries(keyword);
+            }
+
+            else if (choice == "6")
+            {
+                running = false;
+
+                Console.WriteLine("Goodbye!");
+            }
+
+            else
+            {
+                Console.WriteLine("Invalid choice.");
+            }
+        }
     }
 }
