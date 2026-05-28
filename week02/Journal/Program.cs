@@ -1,3 +1,10 @@
+
+// I exceeded the core requirements by adding mood tracking, 
+// word counting, and a search feature. Mood tracking helps users reflect on emotional patterns over time.
+//  Word counting encourages users to write more consistently. The search feature allows users to quickly find
+//  previous journal entries using keywords. 
+// These additions improve usability and make the journal application more practical and interactive.
+
 using System;
 
 class Program
