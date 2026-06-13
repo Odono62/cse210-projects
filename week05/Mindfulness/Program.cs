@@ -1,3 +1,12 @@
+// EXCEEDING REQUIREMENTS:
+// 1. Added a GratitudeActivity class.
+// 2. Prevented reflection questions from repeating until all have been used.
+// 3. Prevented prompts from repeating until all prompts have been used.
+// 4. Added activity session statistics.
+// 5. Saved activity history to a text file.
+// 6. Added an expanding/contracting breathing animation instead of a simple countdown.
+
+
 using System;
 
 class Program
