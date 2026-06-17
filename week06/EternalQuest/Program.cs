@@ -1,9 +1,5 @@
 // EXCEEDING REQUIREMENTS:
 //
-// This program goes beyond the core assignment requirements by adding
-// additional gamification features. In addition to tracking Simple Goals,
-// Eternal Goals, and Checklist Goals, the program includes:
-//
 // 1. A Level System that increases the user's level as they earn points.
 // 2. Achievement Badges that are awarded when important milestones are reached.
 // 3. An additional goal type that allows users to track progress toward
@@ -30,7 +26,9 @@ class Program
             Console.WriteLine("2. List Goals");
             Console.WriteLine("3. Record Event");
             Console.WriteLine("4. Show Score");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Save Goals");
+            Console.WriteLine("6. Load Goals");
+            Console.WriteLine("7. Quit");
 
             string choice = Console.ReadLine();
 
@@ -59,6 +57,14 @@ class Program
                     break;
 
                 case "5":
+                    manager.SaveGoals("goals.txt");
+                    break;
+
+                case "6":
+                    manager.LoadGoals("goals.txt");
+                    break;
+
+                case "7":
                     running = false;
                     break;
             }

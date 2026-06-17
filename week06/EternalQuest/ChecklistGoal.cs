@@ -17,6 +17,21 @@ public class ChecklistGoal : Goal
         _timesCompleted = 0;
     }
 
+    // Constructor used when loading saved state
+    public ChecklistGoal(
+        string name,
+        string description,
+        int points,
+        int target,
+        int bonus,
+        int timesCompleted)
+        : base(name, description, points)
+    {
+        _target = target;
+        _bonus = bonus;
+        _timesCompleted = timesCompleted;
+    }
+
     public override int RecordEvent()
     {
         if (_timesCompleted < _target)
@@ -48,6 +63,6 @@ public class ChecklistGoal : Goal
 
     public override string SaveData()
     {
-        return $"ChecklistGoal,{GetName()},{_timesCompleted}";
+        return $"ChecklistGoal|{GetName()}|{GetDescription()}|{GetPoints()}|{_target}|{_bonus}|{_timesCompleted}";
     }
 }

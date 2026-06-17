@@ -5,6 +5,12 @@ public class EternalGoal : Goal
     {
     }
 
+    // Constructor included for symmetry with saved data loading
+    public EternalGoal(string name, string description, int points, bool unused)
+        : base(name, description, points)
+    {
+    }
+
     public override int RecordEvent()
     {
         return GetPoints();
@@ -22,6 +28,6 @@ public class EternalGoal : Goal
 
     public override string SaveData()
     {
-        return $"EternalGoal,{GetName()}";
+        return $"EternalGoal|{GetName()}|{GetDescription()}|{GetPoints()}";
     }
 }
